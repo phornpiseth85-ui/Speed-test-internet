@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambodia Internet Quality & Complaint System</title>
+  <style>
+    :root{--blue:#1268d8;--navy:#12335a;--green:#079879;--red:#e33b45;--bg:#f3f7fc;--ink:#183452}
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+    header{background:#fff;box-shadow:0 2px 12px #12335a12;position:sticky;top:0;z-index:5}
+    .nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);font-size:18px}.wifi{font-size:34px;color:var(--blue)}
+    nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--navy);text-decoration:none;font-weight:700;font-size:14px}nav a:hover{color:var(--blue)}
+    .hero{background:linear-gradient(120deg,#0d4f91,#1686ce);color:#fff;padding:42px 20px}
+    .hero-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:25px}.hero h1{font-size:clamp(28px,4vw,42px);line-height:1.25;margin:0 0 12px}.hero p{max-width:720px;margin:0;color:#e8f4ff}.hero-mark{font-size:82px;opacity:.9}
+    main{max-width:1180px;margin:26px auto;padding:0 20px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{background:#fff;border:1px solid #dce8f7;border-radius:16px;padding:22px;box-shadow:0 5px 18px #12335a0a;min-width:0}
+    .card h2{font-size:21px;margin:0 0 5px}.sub{font-size:13px;color:#5c7390;margin:0 0 16px}.icon{font-size:38px}.blue{color:var(--blue)}.green{color:var(--green)}.red{color:var(--red)}
+    label{display:block;font-weight:700;font-size:14px;margin:12px 0 5px}input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cbd9e9;border-radius:9px;background:#fff;font:inherit;color:var(--ink)}textarea{min-height:92px;resize:vertical}
+button{border:0;border-radius:10px;padding:12px 15px;background:var(--blue);color:#fff;font:inherit;font-weight:700;cursor:pointer;width:100%;margin-top:14px}
+button:hover{filter:brightness(.94)}.green-btn{background:var(--green)}.red-btn{background:var(--red)}
+.result{margin-top:14px;padding:12px;border-radius:10px;background:#edf5ff;font-size:14px;min-height:44px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.metric{background:#f0f6ff;border-radius:9px;text-align:center;padding:10px 4px}.metric strong{display:block;font-size:21px;color:var(--blue)}.metric span{font-size:12px}
+.lower{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.notice{background:#fff;border-radius:15px;padding:20px;border:1px solid #dce8f7
+}.notice h2{margin-top:0;font-size:20px}.notice li{margin:7px 0}footer{background:#102d4d;color:#e6f1ff;margin-top:30px;padding:22px 20px;
+text-align:center;font-size:13px}.hint{font-size:12px;color:#61758c}.status{padding:8px 10px;background:#fff6e5;color:#815400;border-radius:8px;font-size:13px;
+margin-top:10px}
+@media(max-width:850px){.cards{grid-template-columns:1fr 1fr}.hero-mark{display:none}}
+@media(max-width:600px){.cards,.lower{grid-template-columns:1fr}.nav{align-items:flex-start}nav{gap:10px}.hero{padding:30px 20px}main{padding:0 12px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<div class="brand"><span class="wifi">
+◉
+</span><span>Cambodia Internet Quality<br><small style="font-weight:400;font-size:11px">Better Internet • StrongerCambodia</small></span></div>
+<nav><a href="#speed">Speed Test</a><a href="#rating">Quality Rating</a><a href="#complaint">Submit a Complaint</a><a href="#about">About</a></nav>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <div><h1>Better Internet<br>for Every Cambodian</h1><p>Test your Internet speed, rate service quality, and report problems you experience—in cities and rural communities across Cambodia.</p></div>
+    <div class="hero-mark" aria-hidden="true">📶</div>
+  </div>
+</section>
+<main>
+  <div class="cards">
+    <section class="card" id="speed">
+      <div class="icon blue">
+◉
+</div><h2>Internet Speed Test</h2><p class="sub">Measure your connection performance</p>
+      <p>Check download speed, upload speed, and ping to understand your connection.</p>
+      <label for="providerSpeed">Internet Service Provider</label>
+      <select id="providerSpeed"><option>Metfone</option><option>Cellcard</option><option>Smart</option><option>Yes Seatel</option></select>
+      <label for="connection">Connection Type</label><select id="connection"><option>Wi-Fi</option><option>Mobile Data 4G/5G</option><option>Wired LAN</option></select>
+      <button id="testBtn">Start Speed Test</button>
+      <div class="result" id="speedResult" aria-live="polite">Click the button to begin. Demo note: the displayed values are simulated, not real measurements.</div>
+      <div class="metrics"><div class="metric"><strong id="download">—</strong><span>Download (Mbps)</span></div><div class="metric"><strong id="upload">—</strong><span>Upload (Mbps)</span></div><div class="metric"><strong id="ping">—</strong><span>Ping (ms)</span></div></div>
+      <p class="hint">Real measurements require a speed-test server or API.</p>
+    </section>
+    <section class="card" id="rating">
+      <div class="icon green">
+★
+</div><h2>Internet Quality Rating</h2><p class="sub">Share your service experience</p>
+      <form id="ratingForm">
+        <label for="rateProvider">Internet Service Provider</label><select id="rate Provider" required><option value="">Select a provider</option><option>Metfone</option><option>Cellcard</option><option>Smart</option><option>Yes Seatel</option></select>
+        <label for="province">Province / Capital</label><select id="province" required><option value="">Select a location</option><option>Phnom Penh</option><option>Kampot</option><option>Kandal</option><option>Siem Reap</option><option>Battambang</option><option>Takeo</option><option>Other province</option></select>
+        <label for="area">Connection Type</label><select id="area" required><option>Wifi</option><option>Mobile Data 4G/5G</option><option>Wired LAN</option></select>
+        <label for="stars">Service Rating</label><select id="stars" required><option value="5">
+⭐⭐⭐⭐⭐
+Excellent 5</option><option value="4">
+⭐⭐⭐⭐
+Good 4</option><option value="3">
+⭐⭐⭐
+Average 3</option><option value="2">
+⭐⭐
+Poor 2</option><option value="1">
+⭐
+Very Poor 1</option></select>
+        <label for="ratingNote">Comments (Optional)</label><textarea id="ratingNote" placeholder="For example: Internet is slow in the evening..."></textarea>
+        <button class="green-btn" type="submit">Submit Rating</button>
+      </form>
+      <div class="result" id="ratingResult" aria-live="polite">Your rating confirmation will appear here.</div>
+    </section>
+    <section class="card" id="complaint">
+      <div class="icon red">
+▤
+</div><h2>Complaint System</h2><p class="sub">Report an Internet service issue</p>
+      <form id="complaintForm">
+        <label for="complaintProvider">Internet Service Provider</label><select id="complaintProvider" required><option value="">Select a provider</option><option>Metfone</option><option>Cellcard</option><option>Smart</option><option>Yes Seatel</option></select>
+        <label for="complaintConnection">Connection Type</label><select id="complaintConnection" required><option value="">Select a connection type</option><option>Wi-Fi</option><option>Mobile Data 4G/5G</option><option>Wired LAN</option></select>
+        <label for="complaintType">Issue Type</label><select id="complaintType" required><option>Slow Internet</option><option>Frequent disconnections</option><option>No service</option><option>Billing or charges</option><option>Other issue</option></select>
+        <label for="complaintProvince">location</label><select id="complaintProvince" required><option value="">Select a location</option><option>Phnom Penh</option><option>Kampot</option><option>Kandal</option><option>Siem Reap</option><option>Battambang</option><option>Takeo</option><option>Other province</option></select>
+        <label for="complaintArea">Commune / District or Area (avoid exact home address)</label><input id="complaintArea" placeholder="Enter commune, district, or area name" required>
+        <label for="description">Describe the Issue</label><textarea id="description" placeholder="Describe what happened and when..." required></textarea>
+        <label for="contact">Contact Number (Optional)</label><input id="contact" inputmode="tel" placeholder="Enter a phone number if you want a follow-up">
+        <button class="red-btn" type="submit">Submit Complaint</button>
+      </form>
+      <div class="status">Demo version: this form does not send reports to a realprovider or government agency.</div>
+      <div class="result" id="complaintResult" aria-live="polite">Your demo ticket number will appear here after submission.</div>
+    </section>
+  </div>
+  <div class="lower" id="about">
+    <section class="notice"><h2>💡 How to Use This Website</h2><ul><li>Select your provider and connection type.</li><li>Test at different times of day to compare your experience.</li><li>Rate service based on your actual experience.</li><li>Never include passwords or other sensitive information in a report.</li></ul></section>
+    <section class="notice"><h2>📢 About This Project</h2><p>This project aims to help people share Internet experiences and identify service problems by area. Ratings should be shown with the number of responses and location details so that a small number of reports is not misleading.</p><p class="hint">Before public launch, add a backend, database, data protection, and a process for tracking and responding to complaints.</p></section>
+  </div>
+</main>
+<footer>Cambodia Internet Quality & Complaint System<br>Educational Demo  Website</footer>
+<script>
+  const $ = (id) => document.getElementById(id);
+  $("testBtn").addEventListener("click", () => {
+    // Demo values only. A real speed test needs a server/API to measure network performance.
+    const download = (5 + Math.random() * 75).toFixed(2);
+    const upload = (1 + Math.random() * 25).toFixed(2);
+    const ping = Math.round(15 + Math.random() * 180);
+    $("download").textContent = download;
+    $("upload").textContent = upload;
+    $("ping").textContent = ping;
+    $("speedResult").textContent = "These are simulated demo values only. Connect a real speed-test API to measure your Internet connection.";
+  });
+  $("ratingForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const provider = $("rateProvider").value, province = $("province").value, area = 
+$("area").value;
+    const stars = Number($("stars").value);
+    $("ratingResult").textContent = `Thank you! You rated ${provider} in ${province} (${area}) ${stars}/5 stars. Demo only: this rating is not saved to a server.`;
+});
+$("complaintForm").addEventListener("submit", (event) => {event.preventDefault();const ticket = "DEMO-" + Math.random().toString(36).slice(2, 8).toUpperCase
+();
+$("complaintResult").textContent = `Your demo ticket number is ${ticket}. This report has not been sent to a provider or government agency.`;
+});
+</script>
+</body>
+</html
